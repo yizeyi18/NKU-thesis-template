@@ -96,6 +96,7 @@
   \input{zhwinfonts.tex}
 \fi
 
+% 章节写法与格式
 \if@NKT@English
   \def\chaptername{Chapter \arabic{chapter}}
   \def\thesection{\arabic{chapter}.\arabic{section}}
@@ -139,6 +140,7 @@
 \RequirePackage{mathptmx}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 
+%字体别名
 \def\songti{\rmfamily\upshape}
 \def\heiti{\bfseries}
 % \def\kaiti{\rmfamily\upshape}
@@ -194,6 +196,7 @@
   \fi
   \@xsect{#5}}
 
+%目录页中章节名称后的空格
 \def\@seccntformat#1{\csname the#1\endcsname\quad}
 \if@NKT@Chem
   \def\@seccntformat#1{\csname the#1\endcsname}
@@ -211,6 +214,7 @@
 \def\subsubsection{
   \@startsection{subsubsection}{3}{\z@}{6pt}{6pt}{\subsubsectionformat}}
 
+%章节标题格式
 \def\sectionspecial{\heiti}
 \def\partformat{\centering\huge\heiti}
 \def\chapterformat{\centering\zihaosan\bfseries}
@@ -316,7 +320,7 @@
 
 %   table of contents
 %
-%
+%   目录定义，及“目录”行在目录页的行为
 \renewcommand\tableofcontents{%
   \NKTtemp@dim@a\baselineskip
   \if@twocolumn
@@ -398,6 +402,7 @@
 \def\setnewwidth#1{
   \def\numberline{\csname NKT#1numberline\endcsname}}
 
+%目录页中“章”行的行为
 \def\NKTchapternumberline#1{
   \NKT@settoctitlewidth{chapter}{#1}
   \if@NKT@Bio
@@ -406,6 +411,7 @@
     \hbox to \NKT@tempdim{#1\hfil}\hskip \toctitlesep
   \fi}
 
+%目录页中“节”行的行为
 \def\NKTsectionnumberline#1{
   \NKT@settoctitlewidth{section}{#1}
   \if@NKT@Chem
@@ -418,6 +424,7 @@
     \fi
   \fi}
 
+%目录页中“小节”行的行为
 \def\NKTsubsectionnumberline#1{
   \NKT@settoctitlewidth{subsection}{#1}
   \if@NKT@Chem
@@ -831,6 +838,7 @@ Path=fonts/
 \newcommand{\proof}[1][证明]{\par\textbf{#1.}\,\, }
 \def\endproof{\hfill{\usefont{U}{msa}{m}{n}\char"03}}
 
+%致谢章的标题与目录页行为
 \def\zhixie{
   \clearpage
   \vspace*{0pt}
@@ -862,6 +870,7 @@ Path=fonts/
 
 %Chem requires \fulu with zihaosi title which is not compatible with 
 % \appendix command derived from \chapter.
+% TODO: rewrite \appendix for each Collage
 \def\fulu{
   \clearpage
   \vspace*{0pt}
@@ -873,6 +882,7 @@ Path=fonts/
   \fontsize{12}{20}\selectfont}
 \let\endfulu\relax
 
+%摘要章的标题与目录页行为
 \def\zhaiyao{
   \clearpage
   \vspace*{0pt}
